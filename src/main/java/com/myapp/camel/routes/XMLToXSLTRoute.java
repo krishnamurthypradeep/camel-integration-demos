@@ -11,7 +11,7 @@ public class XMLToXSLTRoute extends RouteBuilder {
 		// TODO Auto-generated method stub
 		
 		from("file:data/products?include=orders-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
-		.log("Recieved Rax XML ${body}")
+		.log("Recieved Raw XML ${body}")
 		.to("xslt:xslt/transform.xml")
 		.to("activemq:queue:xslt");
 		
