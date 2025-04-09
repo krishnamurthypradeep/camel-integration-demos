@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.myapp.camel.dto.Product;
 
-@Component
+//@Component
 public class XmlToJsonRoutes extends RouteBuilder{
 	
 	@Override
