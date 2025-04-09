@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <order>
 
-    <customer id="C0003" type="active">
+    <customer id="C0003" type="active" category="HighValue">
         <name>Columbus Zoo and Aquarium</name>
         <city>Columbus</city>
         <country>US</country>
