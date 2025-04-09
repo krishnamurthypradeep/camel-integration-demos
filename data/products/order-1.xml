@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <order>
 
-    <customer id="A0001" type="active">
+    <customer id="A0001" type="active" category="HighValue">
         <name>Antwerp Zoo</name>
         <city>Antwerp</city>
         <country>BE</country>

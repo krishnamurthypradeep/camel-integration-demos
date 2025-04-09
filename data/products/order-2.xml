@@ -3,7 +3,7 @@
 
 <order>
 
-    <customer id="B0002" type="test">
+    <customer id="B0002" type="test" category="Normal">
         <name>Bristol Zoo Gardens</name>
         <city>Bristol</city>
         <country>UK</country>

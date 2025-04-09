@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <order>
 
-    <customer id="D0004" type="test">
+    <customer id="D0004" type="test" category="Normal">
         <name>Dartmoor Zoological Park</name>
         <city>Devon</city>
         <country>UK</country>

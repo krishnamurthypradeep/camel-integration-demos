@@ -3,8 +3,8 @@ package com.myapp.camel.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-//@Component
-public class MulticastPattern  extends RouteBuilder{
+@Component
+public class RecipientListPattern  extends RouteBuilder{
 	
 	@Override
 	public void configure() throws Exception {
@@ -12,12 +12,10 @@ public class MulticastPattern  extends RouteBuilder{
 	
 		// apache camel is going to threadpool 
 		
-		from("activemq:queue:activeOrders")
+		from("file:data/products?include=order-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
 		
-		.multicast()
-		.parallelProcessing()
-		.stopOnException()
-		.to("activemq:queue:accounts","activemq:queue:production");
+		.setHeader("recipients",method("resolver","process"))
+		.recipientList(header("recipients"));
 		
 //		from("activemq:queue:activeOrders")
 //		.unmarshall().pgp(new File("privatekey"),"")
