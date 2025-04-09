@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.myapp.camel.bean.RecipientsBean;
 import com.myapp.camel.config.MyAggregator;
 
-//@Component
+@Component
 public class AggregatorPattern  extends RouteBuilder{
 	
 	@Override
