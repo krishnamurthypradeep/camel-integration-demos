@@ -3,17 +3,31 @@ package com.myapp.camel.bean;
 import org.apache.camel.language.xpath.XPath;
 import org.springframework.stereotype.Component;
 
+// Camel Language Annotation
+// @XPath
+// @Bean
+// @JsonPath
+// @Simple
+// @XQuery
+
+// Exchange
+// @Header
+// @Body
+// @Attachments
+// 
+
+
 @Component("resolver")
 public class RecipientsBean {
 	
 	public String[] process(@XPath("/order/customer/@category") String category) {
 		
 		if(isHighValueCustomer(category)) {
-			return new String[] {"activemq:queue:accounting1","activemq:queue:production1"};
+			return new String[] {"activemq:queue:accounting2","activemq:queue:production2"};
 		
 	}
 		else {
-			return new String[] {"activemq:queue:accounting1"};
+			return new String[] {"activemq:queue:accounting2"};
 		
 	}
 	}
