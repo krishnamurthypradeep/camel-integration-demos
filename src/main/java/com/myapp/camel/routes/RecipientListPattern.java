@@ -21,7 +21,7 @@ public class RecipientListPattern  extends RouteBuilder{
 		
 		// Step1: requestor looksup registry
 		// Step2: Registry getBean from ApplicationContext
-		from("file:data/products?include=order-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
+		from("file:data/products?include=products-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
 		
 		.setHeader("recipients",method("resolver","process"))
 		.wireTap("activemq:queue:audit")
