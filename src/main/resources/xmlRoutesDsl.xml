@@ -1,0 +1,26 @@
+
+
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+
+<route id="xmlRoute">
+<from uri="activemq:queue:javadslproducts2"/>
+<choice>
+<when>
+<simple>${header.fileType} == 'xml'</simple>
+<to uri="activemq:queue:xmlproductsxmldsl2"/>
+</when>
+
+<when>
+<simple>${header.fileType} == 'json'</simple>
+<to uri="activemq:queue:jsonproductsxmldsl2"/>
+</when>
+<otherwise>
+<to uri="activemq:queue:otherproductsxmldsl2"/>
+</otherwise>
+</choice>
+
+</route>
+
+
+</routes>

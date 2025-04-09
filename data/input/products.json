@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "productname": "Iphone15",
+            "price": 85000.5,
+            "company": "Apple"
+        },
+        {
+            "productname": "oneplus12",
+            "price": 75000.5,
+            "company": "Oneplus"
+        }
+    ]
+}
+
+
