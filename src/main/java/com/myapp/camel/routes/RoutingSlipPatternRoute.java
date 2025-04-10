@@ -3,13 +3,14 @@ package com.myapp.camel.routes;
 import java.util.List;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.model.dataformat.JsonLibrary;
-import org.springframework.core.annotation.Order;
+
 import org.springframework.stereotype.Component;
+
+import com.myapp.camel.dto.Order;
 
 @Component
 
-public class SplitterPatternRoute extends RouteBuilder {
+public class RoutingSlipPatternRoute extends RouteBuilder {
 	
 	@Override
 	public void configure() throws Exception {
@@ -32,13 +33,20 @@ public class SplitterPatternRoute extends RouteBuilder {
 		// NodeList
 		
 		// Consume Json Array, split this into individual order objects
-		from("file:data/products?include=order-.*.json&noop=true&autoCreate=false&directoryMustExist=true")
+		from("file:data/products?include=order-.*.csv&noop=true&autoCreate=false&directoryMustExist=true")
 		// List<Map>
-		.unmarshal().json(JsonLibrary.Jackson,List.class)
+		.unmarshal().csv()
 		.split(body())
-		.marshal().json(JsonLibrary.Jackson) // Remarshal each part to JSOn String
+		.process(e ->{
+		List<String> row =	 e.getIn().getBody(List.class);
+		Order order = new Order();
+		order.setId(Integer.valueOf(row.get(0)));
 		
-		.to("activemq:queue:splitorders");
+		order.setName(row.get(1));
+		order.setPriority(row.get(2));
+		e.getIn().setBody(order);
+			
+		}).bean("routingSlip");
 		
 		
 	//	from("file:","ftp:").filter().to("");
