@@ -2,13 +2,13 @@ package com.myapp.camel.routes;
 
 import java.util.List;
 
+import org.apache.camel.Predicate;
 import org.apache.camel.builder.RouteBuilder;
-
 import org.springframework.stereotype.Component;
 
 import com.myapp.camel.dto.Order;
 
-@Component
+//@Component
 
 public class RoutingSlipPatternRoute extends RouteBuilder {
 	
@@ -33,10 +33,15 @@ public class RoutingSlipPatternRoute extends RouteBuilder {
 		// NodeList
 		
 		// Consume Json Array, split this into individual order objects
-		from("file:data/products?include=order-.*.csv&noop=true&autoCreate=false&directoryMustExist=true")
+		from("file:data/products?fileName=order-1.csv&noop=true")
 		// List<Map>
-		.unmarshal().csv()
-		.split(body())
+		.unmarshal().csv() // turns csv 
+		.split(body()) // process each row
+		.filter((Predicate) exchange -> {
+    List<?> row = exchange.getIn().getBody(List.class);
+    return !"id".equalsIgnoreCase(String.valueOf(row.get(0)));
+		})
+		// row is mapped to order object
 		.process(e ->{
 		List<String> row =	 e.getIn().getBody(List.class);
 		Order order = new Order();
@@ -45,8 +50,10 @@ public class RoutingSlipPatternRoute extends RouteBuilder {
 		order.setName(row.get(1));
 		order.setPriority(row.get(2));
 		e.getIn().setBody(order);
-			
-		}).bean("routingSlip");
+			// triggering routing slip
+		}).marshal().json()
+		
+		.bean("routingSlip");
 		
 		
 	//	from("file:","ftp:").filter().to("");
@@ -71,6 +78,12 @@ public class RoutingSlipPatternRoute extends RouteBuilder {
 	}
 
 }
+
+// RoutingSlip vs  DynamicRouter
+// has to identify
+// endpoints
+
+
 
 // Supply Chain Management
 // Auto Manufacturing

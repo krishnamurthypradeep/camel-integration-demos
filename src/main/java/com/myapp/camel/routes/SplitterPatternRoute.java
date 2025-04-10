@@ -7,7 +7,7 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 
 public class SplitterPatternRoute extends RouteBuilder {
 	
