@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 //@Component
-public class DynamicRouter extends RouteBuilder{
+public class DynamicRouterPatternNew extends RouteBuilder{
 
 	// direct | seda
 	// direct components are synchronous in memory routes
@@ -13,9 +13,9 @@ public class DynamicRouter extends RouteBuilder{
 	public void configure() throws Exception {
 		
 		
-		from("direct:start")
-		.dynamicRouter(method("dynamicRouterConfig", "route"))
-		.to("mock:result");
+		from("direct:orders")
+		.dynamicRouter(method("dynamicRouterConfig", "route"));
+		//.to("mock:result");
 		
 	}
 }

@@ -24,7 +24,7 @@ public class CamelIntegrationDemosApplication {
 	@Bean
 	CommandLineRunner runner(MessageSender sender) {
 		return args ->{
-		sender.sendToDirect("Hi");
+		sender.sendToDirect("Order Id 111 - modified");
 		
 		};
 	}
