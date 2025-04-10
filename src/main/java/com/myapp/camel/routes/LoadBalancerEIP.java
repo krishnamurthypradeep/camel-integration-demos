@@ -3,7 +3,7 @@ package com.myapp.camel.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class LoadBalancerEIP extends RouteBuilder {
 	
 	@Override
@@ -18,7 +18,7 @@ public class LoadBalancerEIP extends RouteBuilder {
 		
 		
 		from("direct:lb")
-		.setHeader("orderId", constant("order123"))
+		.setHeader("orderId", constant("order1322"))
 		.loadBalance()
 		.sticky(header("orderId"))
 		
@@ -28,3 +28,19 @@ public class LoadBalancerEIP extends RouteBuilder {
 	}
 
 }
+
+// Errors
+
+// Recoverable
+// Irrecoverable
+
+// DefaultErrorHandler
+
+// DeadLetterChannel
+
+// TransactionErrorHandler
+
+// LoggingErrorHandler
+
+
+

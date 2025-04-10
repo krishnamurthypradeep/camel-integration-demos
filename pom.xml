@@ -44,6 +44,14 @@
 </dependencyManagement>
 	<dependencies>
 		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+           
+      
+        </dependency>
+		
+		
 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -96,6 +104,19 @@
 <artifactId>camel-csv-starter</artifactId>
 
 </dependency>
+
+<dependency>
+<groupId>org.apache.camel.springboot</groupId>
+<artifactId>camel-sql-starter</artifactId>
+</dependency>
+
+
+<dependency>
+<groupId>com.mysql</groupId>
+<artifactId>mysql-connector-j</artifactId>
+
+</dependency>
+
 
 <!--<dependency>
 <groupId>org.apache.camel.springboot</groupId>
