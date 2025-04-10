@@ -10,6 +10,13 @@ public class RecipientListPattern  extends RouteBuilder{
 	
 	@Override
 	public void configure() throws Exception {
+		
+		
+		// ApplicationContextRegistry (Spring)
+		
+		// CdiBeanRegistry (Quarkus, Micronaut)
+		
+		
 		// TODO Auto-generated method stub
 	
 		// apache camel is going to threadpool 
@@ -23,7 +30,7 @@ public class RecipientListPattern  extends RouteBuilder{
 		// Step2: Registry getBean from ApplicationContext
 		from("file:data/products?include=orders-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
 		
-		.setHeader("recipients",method("resolver","process"))
+		.setHeader("recipients",method("resolver","process1"))
 		.wireTap("activemq:queue:audit")
 		.recipientList(header("recipients"));
 		

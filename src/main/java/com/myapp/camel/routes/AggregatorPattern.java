@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.myapp.camel.bean.RecipientsBean;
 import com.myapp.camel.config.MyAggregator;
 
-@Component
+//@Component
 public class AggregatorPattern  extends RouteBuilder{
 	
 	@Override
@@ -30,26 +30,6 @@ public class AggregatorPattern  extends RouteBuilder{
 		.to("activemq:queue:combinedmessages");
 		
 		
-		from("timer:test?repeatCount=4")
-		.setBody(constant("Order1"))
-		.setHeader("orderId",constant("78999"))
-		.to("activemq:queue:orders");
-				
-		
-//		from("file:data/products?include=order-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
-//		.bean("", null)
-		
-//		from("file:data/products?include=order-.*.xml&noop=true&autoCreate=false&directoryMustExist=true")
-//		.process(e ->{
-//		String message=	 e.getIn().getBody(String.class);
-//		RecipientsBean bean = new RecipientsBean();
-//		 String list[]= bean.process(message);
-//		 e.getOut().setBody(list);
-//		});
-		
-//		from("activemq:queue:activeOrders")
-//		.unmarshall().pgp(new File("privatekey"),"")
-//		.log("")
 		
 	}
 

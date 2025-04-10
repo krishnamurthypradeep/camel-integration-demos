@@ -1,5 +1,6 @@
 package com.myapp.camel.bean;
 
+import org.apache.camel.TypeConverter;
 import org.apache.camel.language.xpath.XPath;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component("resolver")
 public class RecipientsBean {
 	
-	public String[] process(@XPath("/order/customer/@category") String category) {
+	public String[] process1(@XPath("/order/customer/@category") String category,TypeConverter converter) {
 		
 		if(isHighValueCustomer(category)) {
 			return new String[] {"activemq:queue:accounting2","activemq:queue:production2"};
