@@ -16,7 +16,7 @@ public class MessageSender {
 	
 	
 	public void sendToDirect(String body) {
-		producerTemplate.sendBody("direct:orders",body);
+		producerTemplate.sendBody("direct:lb",body);
 	}
 	
 	
