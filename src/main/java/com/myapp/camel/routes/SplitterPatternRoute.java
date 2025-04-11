@@ -1,6 +1,8 @@
 package com.myapp.camel.routes;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
@@ -32,10 +34,16 @@ public class SplitterPatternRoute extends RouteBuilder {
 		// NodeList
 		
 		// Consume Json Array, split this into individual order objects
+		//ExecutorService executorService = Executors.newFixedThreadPool(20);
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		
 		from("file:data/products?include=order-.*.json&noop=true&autoCreate=false&directoryMustExist=true")
 		// List<Map>
 		.unmarshal().json(JsonLibrary.Jackson,List.class)
-		.split(body())
+		.split(body().tokenize("\n"))
+		.streaming()
+		
+		.executorService(executorService)
 		.marshal().json(JsonLibrary.Jackson) // Remarshal each part to JSOn String
 		
 		.to("activemq:queue:splitorders");

@@ -7,10 +7,15 @@ import org.springframework.util.LinkedCaseInsensitiveMap;
 
 import com.myapp.camel.dto.Order;
 
-@Component
+//@Component
 public class DBToActiveMQRoute extends RouteBuilder {
 	
 	// LinkedCaseInsend
+	
+	// RestEndpoint
+	// CSV
+	// Thread Pool
+	// Seda
 	
 	@Override
 	public void configure() throws Exception {
