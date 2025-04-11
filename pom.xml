@@ -55,6 +55,13 @@
       <type>pom</type>
       <scope>import</scope>
     </dependency>
+    <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-dependencies</artifactId>
+                <version>3.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 </dependencies>
 </dependencyManagement>
 	<dependencies>
@@ -72,7 +79,26 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-starter-sqs</artifactId>
+        </dependency>
 		
+		<dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-aws2-sqs-starter</artifactId>
+           
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.camel/camel-aws2-sqs -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-aws2-sqs</artifactId>
+            
+        </dependency>
 		<dependency>
 <groupId>org.apache.camel.springboot</groupId>
 <artifactId>camel-spring-boot-starter</artifactId>
@@ -177,11 +203,6 @@
 <artifactId>camel-servlet-starter</artifactId>
 
 
-</dependency>
-
-<dependency>
-<groupId>org.apache.camel</groupId>
-<artifactId>camel-cxf</artifactId>
 </dependency>
 
 <dependency>
