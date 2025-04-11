@@ -7,7 +7,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.http.base.HttpOperationFailedException;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 
 
 public class SoapToActiveMqRoute extends RouteBuilder {

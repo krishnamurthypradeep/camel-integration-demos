@@ -1,9 +1,7 @@
 package com.myapp.camel.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.model.dataformat.CsvDataFormat;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.connection.JmsTransactionManager;

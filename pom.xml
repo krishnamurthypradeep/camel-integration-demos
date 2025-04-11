@@ -79,7 +79,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>io.awspring.cloud</groupId>
             <artifactId>spring-cloud-aws-starter</artifactId>
         </dependency>
@@ -93,12 +93,12 @@
             <artifactId>camel-aws2-sqs-starter</artifactId>
            
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.camel/camel-aws2-sqs -->
+         https://mvnrepository.com/artifact/org.apache.camel/camel-aws2-sqs 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-aws2-sqs</artifactId>
             
-        </dependency>
+        </dependency>-->
 		<dependency>
 <groupId>org.apache.camel.springboot</groupId>
 <artifactId>camel-spring-boot-starter</artifactId>
@@ -198,19 +198,23 @@
 </dependency>
 
 
-<dependency>
+<!--<dependency>
 <groupId>org.apache.camel.springboot</groupId>
 <artifactId>camel-servlet-starter</artifactId>
 
 
-</dependency>
+</dependency>-->
 
 <dependency>
-<groupId>org.apache.cxf</groupId>
-<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
-<version>4.1.1</version>
+    <groupId>org.apache.camel.springboot</groupId>
+    <artifactId>camel-cxf-soap-starter</artifactId>
+</dependency>
 
-
+<!-- Apache CXF core (for JAX-WS support) -->
+<dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+    <version>4.1.1</version>
 </dependency>
 
 <dependency>
