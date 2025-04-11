@@ -21,7 +21,7 @@ public class CamelIntegrationDemosApplication {
 		SpringApplication.run(CamelIntegrationDemosApplication.class, args);
 	}
 	
-	@Bean
+	//@Bean
 	CommandLineRunner runner(MessageSender sender) {
 		return args ->{
 		sender.sendToDirect("Order Id 1122 - cancelled");
